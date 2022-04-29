@@ -18,11 +18,13 @@ const { NotImplementedError } = require('../extensions/index.js');
     this.name = "ValidError"; // (2)
   }
 }
+
 function getSeason(date) {
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
   if (!arguments.length) {return "Unable to determine the time of year!"}
-  if (!(date.constructor.name === "Date")) {throw new ValidationDateError('Invalid date!');}
+  //console.debug('Date.prototype.isPrototypeOf(date)' + Date.prototype.isPrototypeOf(date));
+  if (!(date.constructor.name === "Date") || (!Date.prototype.isPrototypeOf(date)) ||(!(date instanceof Date))) {throw new ValidationDateError('Invalid date!');}
   switch(date.getMonth()){
     case 0:
     case 1:
