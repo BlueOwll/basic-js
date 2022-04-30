@@ -25,6 +25,11 @@ function getSeason(date) {
   if (!arguments.length) {return "Unable to determine the time of year!"}
   //console.debug('Date.prototype.isPrototypeOf(date)' + Date.prototype.isPrototypeOf(date));
   if (!(date.constructor.name === "Date") || (!Date.prototype.isPrototypeOf(date)) ||(!(date instanceof Date))) {throw new ValidationDateError('Invalid date!');}
+  try{
+    date.getDay();
+  }catch{
+    throw new ValidationDateError('Invalid date!'); 
+  }
   switch(date.getMonth()){
     case 0:
     case 1:
